@@ -1,83 +1,71 @@
 package com.example;
 
+import java.time.Year;
+
 public class Autor {
     private String idAutor;
-    private String Nombre;
+    private String nombre;
     private String nacionalidad;
     private int anioNacimiento;
-    private int anioActual = 2026;
 
-    public String getidAutor(){
+    public String getIdAutor() {
         return idAutor;
     }
 
-    public String getNombre(){
-        return Nombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getnacionalidad(){
+    public String getNacionalidad() {
         return nacionalidad;
     }
 
-    public int getanioNacimiento(){
+    public int getAnioNacimiento() {
         return anioNacimiento;
     }
 
-    public void setIdAutor(String idAutor){
+    public void setIdAutor(String idAutor) {
         this.idAutor = idAutor;
     }
 
-    public void setNombre(String Nombre){
-        this.Nombre = Nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setNacionalidad(String nacionalidad){
+    public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
-    
-    public void setAnionacimiento(int anioNacimiento){
-        if (anioNacimiento < 0 || anioNacimiento < 1900 || anioNacimiento > anioActual)
+
+    public void setAnioNacimiento(int anioNacimiento) {
+        if (anioNacimiento < 1900 || anioNacimiento > Year.now().getValue())
             System.out.println("El año de nacimiento ingresado es negativo o no concuerda con el actual, ingrese uno adecuado");
         else {
             this.anioNacimiento = anioNacimiento;
         }
     }
-    
-    public Autor(String idAutor){
-        this.idAutor = idAutor;
 
-        Nombre = "Desconocido";
-        nacionalidad = "Desconocida";
-        anioNacimiento = 0;
-    }    
-
-    public Autor(String idAutor, String Nombre){
-        this.idAutor = idAutor;
-        this.Nombre = Nombre;
-
-        nacionalidad = "Desconocida";
-        anioNacimiento = 0;
+    public Autor(String idAutor) {
+        this(idAutor, "Desconocido");
     }
 
-    public Autor(String idAutor, String Nombre, String nacionalidad){
+    public Autor(String idAutor, String nombre) {
+        this(idAutor, nombre, "Desconocida");
+    }
+
+    public Autor(String idAutor, String nombre, String nacionalidad) {
         this.idAutor = idAutor;
-        this.Nombre = Nombre;
+        this.nombre = nombre;
         this.nacionalidad = nacionalidad;
-
-        anioNacimiento = 0;
+        this.anioNacimiento = 0;
     }
 
-    public Autor(String idAutor, String Nombre, String nacionalidad, int anioNacimiento){
-        this.idAutor = idAutor;
-        this.Nombre = Nombre;
-        this.nacionalidad = nacionalidad;
-        this.anioNacimiento = anioNacimiento;       
+    public Autor(String idAutor, String nombre, String nacionalidad, int anioNacimiento) {
+        this(idAutor, nombre, nacionalidad);
+        setAnioNacimiento(anioNacimiento);
     }
 
-    @Override 
-
-    public String toString(){
-        return "Id del autor: " + idAutor + "\nNombre del autor: " + Nombre + "\nNacionalidad: " + nacionalidad + "\nAño de nacimiento: " + anioNacimiento;
+    @Override
+    public String toString() {
+        return "Id del autor: " + idAutor + "\nNombre del autor: " + nombre + "\nNacionalidad: " + nacionalidad + "\nAño de nacimiento: " + anioNacimiento;
     }
-
 }
